@@ -1,0 +1,431 @@
+<!doctype html>
+<html lang="zh-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>鑫駿開服｜天堂專業輔導</title>
+<meta name="description" content="鑫駿開服：輔導開服、版本買斷、仿正・經典懷舊版授權。技術・誠信・長期經營。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0b0a09; --char:#14120f; --ivory:#f3ead8; --mute:#b9ad94;
+  --gold:#d9b45a; --gold2:#b8892e; --seal:#8c1d12; --line:rgba(217,180,90,.22);
+  --serif:"Noto Serif TC","Songti TC",serif; --sans:"Noto Sans TC","PingFang TC","Microsoft JhengHei",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;background:var(--ink)}
+body{font-family:var(--sans);color:var(--ivory);background:var(--ink);line-height:1.8;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img,video{display:block;max-width:100%}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+
+/* 捲動進度 */
+.prog{position:fixed;left:0;top:0;height:3px;width:0;background:linear-gradient(90deg,var(--gold2),#f1d27a);z-index:100}
+
+/* 左側垂直導覽軌 */
+.rail{position:fixed;left:0;top:0;bottom:0;width:84px;z-index:50;display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:26px 0;border-right:1px solid var(--line);background:var(--ink)}
+.rail .lg{width:46px;height:46px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 2px var(--gold2)}
+.rail .lg img{width:100%;height:100%;object-fit:cover}
+.rail nav{display:flex;flex-direction:column;gap:26px;align-items:center}
+.rail nav a{writing-mode:vertical-rl;letter-spacing:.35em;font-size:13px;color:var(--mute);position:relative;padding:4px 0;transition:color .3s}
+.rail nav a::after{content:"";position:absolute;left:-12px;top:50%;width:3px;height:3px;border-radius:50%;background:var(--gold2);transform:translateY(-50%) scale(0);transition:transform .3s}
+.rail nav a:hover,.rail nav a.on{color:var(--gold)}
+.rail nav a.on::after,.rail nav a:hover::after{transform:translateY(-50%) scale(1)}
+.rail .tel{writing-mode:vertical-rl;font-size:12px;letter-spacing:.3em;color:var(--gold)}
+
+main{margin-left:84px}
+section{padding:140px 7vw;position:relative}
+.alt{background:var(--char)}
+.num{font-family:var(--serif);font-weight:900;font-size:clamp(64px,9vw,128px);line-height:1;color:transparent;-webkit-text-stroke:1px rgba(217,180,90,.55);transition:color .9s,-webkit-text-stroke-color .9s}
+.rv.in .num{color:rgba(217,180,90,.14)}
+.eyebrow{font-size:13px;letter-spacing:.4em;color:var(--gold);margin-bottom:14px}
+h2{font-family:var(--serif);font-weight:900;font-size:clamp(32px,4.4vw,56px);line-height:1.25;letter-spacing:.04em}
+.lead{max-width:640px;color:var(--mute);margin-top:18px;font-size:17px}
+.hair{height:1px;background:linear-gradient(90deg,var(--gold2),transparent);margin:26px 0 0;width:180px}
+
+/* hero */
+.hero{min-height:100vh;display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:5vw;padding-top:110px;overflow:hidden;background:radial-gradient(circle at 78% 40%,#2a1c06 0%,var(--ink) 60%)}
+.hero video.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.22;filter:saturate(.8) blur(1px)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--ink) 8%,rgba(11,10,9,.6) 60%,rgba(11,10,9,.85));pointer-events:none}
+.hero>*{position:relative;z-index:2}
+.hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(46px,6.4vw,92px);line-height:1.12;letter-spacing:.05em}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p{margin:26px 0 38px;font-size:19px;color:var(--mute);max-width:520px}
+.btn{display:inline-flex;align-items:center;gap:12px;padding:16px 34px;border-radius:999px;font-weight:700;letter-spacing:.12em;transition:transform .3s,box-shadow .3s}
+.btn.gold{background:linear-gradient(180deg,#f1d27a,#c9992f);color:#2a1604;box-shadow:0 10px 30px rgba(217,180,90,.25)}
+.btn.gold:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(217,180,90,.4)}
+.btn.line{border:1px solid var(--gold2);color:var(--gold);margin-left:14px}
+.btn.line:hover{background:rgba(217,180,90,.1)}
+.artwrap{position:relative}
+.art{aspect-ratio:16/10;background:url(assets/hero.jpg) 6% 42%/auto 168%;border-radius:6px;box-shadow:0 30px 80px rgba(0,0,0,.6);position:relative;overflow:hidden;transition:transform .15s}
+.art::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 70%,rgba(11,10,9,.55) 100%)}
+.artwrap::before{content:"";position:absolute;inset:-14px;border:1px solid rgba(217,180,90,.35);border-radius:10px;pointer-events:none}
+.stamp{position:absolute;right:-18px;bottom:-26px;width:118px;height:118px;border-radius:50%;background:var(--seal);color:#fff;display:grid;place-items:center;text-align:center;font-family:var(--serif);font-weight:900;font-size:20px;line-height:1.25;letter-spacing:.1em;box-shadow:0 0 0 4px rgba(255,255,255,.12),0 14px 30px rgba(0,0,0,.5);transform:rotate(-8deg)}
+.scroll{position:absolute;left:7vw;bottom:34px;font-size:12px;letter-spacing:.4em;color:var(--mute);z-index:3}
+.scroll::after{content:"";display:block;width:1px;height:46px;background:linear-gradient(var(--gold),transparent);margin:10px 0 0 4px;animation:drop 2s infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* 跑馬燈 */
+.marq{overflow:hidden;border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px 0;background:var(--ink)}
+.marq div{display:flex;gap:64px;width:max-content;animation:mq 60s linear infinite;font-family:var(--sans);font-weight:700;font-size:26px;color:var(--ivory);letter-spacing:.14em;white-space:nowrap}
+.marq span em{font-style:normal;color:var(--gold)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* 三階梯 */
+.stairs{display:grid;grid-template-columns:repeat(3,1fr);gap:0;align-items:end;margin-top:70px}
+.step{position:relative;padding:44px 38px 48px;border-left:1px solid var(--line);transition:background .4s;overflow:hidden}
+.step:nth-child(1){min-height:560px}
+.step:nth-child(2){min-height:660px}
+.step:nth-child(3){min-height:760px;background:linear-gradient(180deg,rgba(140,29,18,.22),rgba(217,180,90,.06));border:1px solid var(--gold2)}
+.step::before{content:"";position:absolute;left:0;top:0;height:3px;width:0;background:var(--gold);transition:width .6s}
+.step:hover::before{width:100%}
+.step .glow{position:absolute;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(217,180,90,.22),transparent 65%);pointer-events:none;opacity:0;transition:opacity .3s;transform:translate(-50%,-50%)}
+.step:hover .glow{opacity:1}
+.step .no{font-family:var(--serif);font-weight:900;font-size:64px;line-height:1;color:var(--gold);opacity:.9}
+.step .who{font-size:14px;letter-spacing:.3em;color:var(--mute);margin:18px 0 6px}
+.step h3{font-family:var(--serif);font-weight:900;font-size:34px;line-height:1.3;letter-spacing:.04em}
+.step .tagline{margin-top:10px;color:var(--mute);font-size:16px}
+.step ul{list-style:none;margin:26px 0 0}
+.step li{padding:11px 0 11px 26px;position:relative;font-size:16px;border-bottom:1px dashed rgba(217,180,90,.18)}
+.step li::before{content:"";position:absolute;left:2px;top:21px;width:10px;height:10px;border-radius:50%;background:var(--gold2)}
+.price{margin-top:30px;font-family:var(--serif);font-weight:900;font-size:30px;color:var(--gold)}
+.price small{display:block;font-family:var(--sans);font-weight:500;font-size:13px;color:var(--mute);letter-spacing:.14em;margin-bottom:4px}
+.ribbon{position:absolute;right:22px;top:22px;background:var(--seal);color:#fff;font-size:13px;letter-spacing:.2em;padding:5px 18px;clip-path:polygon(0 0,100% 0,calc(100% - 10px) 50%,100% 100%,0 100%,10px 50%)}
+.step .go{display:inline-block;margin-top:26px;color:var(--gold);letter-spacing:.2em;font-weight:700;border-bottom:1px solid var(--gold2);padding-bottom:4px}
+.proof{margin-top:20px;font-size:13px;color:var(--mute);letter-spacing:.06em}
+
+/* 影音展示牆 */
+.wall{display:flex;gap:28px;margin-top:70px;overflow-x:auto;scroll-snap-type:x mandatory;padding:10px 0 34px;scrollbar-width:thin;scrollbar-color:var(--gold2) transparent}
+.vid{flex:none;width:260px;scroll-snap-align:start;cursor:pointer;position:relative}
+.vid .ph{position:relative;aspect-ratio:9/16;border-radius:22px;overflow:hidden;background:#000;box-shadow:0 0 0 1px var(--line),0 24px 50px rgba(0,0,0,.55);transition:transform .4s,box-shadow .4s}
+.vid:hover .ph{transform:translateY(-10px);box-shadow:0 0 0 2px var(--gold2),0 34px 60px rgba(0,0,0,.65)}
+.vid img,.vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vid .play{position:absolute;right:14px;bottom:14px;width:54px;height:54px;border-radius:50%;background:rgba(11,10,9,.7);border:1px solid var(--gold2);display:grid;place-items:center;transition:background .3s}
+.vid:hover .play{background:var(--gold)}
+.vid .play::after{content:"";border-left:16px solid var(--gold);border-top:10px solid transparent;border-bottom:10px solid transparent;margin-left:5px;transition:border-color .3s}
+.vid:hover .play::after{border-left-color:#2a1604}
+.vid b{display:block;font-family:var(--serif);font-weight:900;font-size:21px;margin-top:18px;letter-spacing:.04em}
+.vid small{display:block;color:var(--mute);font-size:14px;margin-top:2px}
+dialog{border:0;background:transparent;color:var(--ivory);max-width:100vw;max-height:100vh;margin:auto}
+dialog::backdrop{background:rgba(5,4,3,.9);backdrop-filter:blur(6px)}
+.dlg{position:relative;padding:14px;background:#14120f;border:1px solid var(--gold2);border-radius:18px}
+.dlg video{max-height:84vh;max-width:min(92vw,520px);border-radius:10px;background:#000}
+.dlg img{max-height:86vh;max-width:92vw;border-radius:10px}
+.dlg .x{position:absolute;right:-14px;top:-14px;width:40px;height:40px;border-radius:50%;background:var(--gold);color:#2a1604;font-size:22px;font-weight:900;line-height:1}
+
+/* 服務 6 格 */
+.svc{display:grid;grid-template-columns:repeat(3,1fr);margin-top:70px;border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.svc div{padding:44px 36px 48px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);position:relative;transition:background .4s}
+.svc div:hover{background:rgba(217,180,90,.06)}
+.svc i{position:absolute;right:26px;top:22px;font-style:normal;font-family:var(--serif);font-weight:900;font-size:15px;color:var(--mute);letter-spacing:.2em}
+.svc svg{width:44px;height:44px;stroke:var(--gold);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-bottom:22px}
+.svc b{display:block;font-family:var(--serif);font-weight:900;font-size:24px;letter-spacing:.04em;margin-bottom:8px}
+.svc p{color:var(--mute);font-size:15px;line-height:1.75}
+
+/* 機房網路圖 */
+.idc{display:grid;grid-template-columns:1.15fr 1fr;gap:6vw;align-items:center;margin-top:60px}
+.netmap{position:relative;aspect-ratio:16/10;border:1px solid var(--line);background:radial-gradient(circle at 50% 50%,#1c1608,#0b0a09 70%);overflow:hidden}
+.netmap svg{position:absolute;inset:0;width:100%;height:100%}
+.netmap .ln{stroke:rgba(217,180,90,.35);stroke-width:1;fill:none;stroke-dasharray:4 6;animation:dash 6s linear infinite}
+@keyframes dash{to{stroke-dashoffset:-100}}
+.netmap .nd{fill:var(--gold);animation:blip 2.4s infinite}
+.netmap .nd:nth-child(2n){animation-delay:.8s}.netmap .nd:nth-child(3n){animation-delay:1.5s}
+@keyframes blip{0%,100%{opacity:.35;r:3}50%{opacity:1;r:6}}
+.netmap .hub{fill:#06c755;stroke:#0b0a09;stroke-width:3}
+.netmap .ring{fill:none;stroke:#d9b45a;stroke-width:1.5;animation:ring 3s infinite;transform-origin:50% 50%}
+@keyframes ring{0%{r:10;opacity:.9}100%{r:80;opacity:0}}
+.netmap .lbl{position:absolute;left:18px;bottom:16px;font-size:13px;letter-spacing:.3em;color:var(--gold)}
+.idc ul{list-style:none;margin-top:26px}
+.idc li{padding:14px 0 14px 34px;border-bottom:1px dashed rgba(217,180,90,.2);position:relative}
+.idc li::before{content:"";position:absolute;left:4px;top:25px;width:14px;height:1px;background:var(--gold)}
+.idc li b{color:var(--gold)}
+
+/* 流程 */
+.flow{display:grid;grid-template-columns:repeat(5,1fr);margin-top:80px;position:relative}
+.flow::before{content:"";position:absolute;left:0;right:0;top:34px;height:1px;background:linear-gradient(90deg,var(--gold2),rgba(217,180,90,.15))}
+.flow div{position:relative;padding-top:84px;padding-right:18px}
+.flow i{position:absolute;left:0;top:0;width:68px;height:68px;border-radius:50%;background:var(--ink);border:1px solid var(--gold2);display:grid;place-items:center;font-style:normal;font-family:var(--serif);font-weight:900;font-size:26px;color:var(--gold)}
+.flow b{display:block;font-size:20px;margin-bottom:6px}
+.flow p{color:var(--mute);font-size:15px;line-height:1.7}
+
+/* 版本＋截圖 */
+.ver{display:flex;gap:4vw;flex-wrap:wrap;margin-top:70px;align-items:flex-end}
+.ver .v{font-family:var(--serif);font-weight:900;font-size:clamp(64px,9vw,132px);line-height:1;color:var(--gold);letter-spacing:.02em}
+.ver .v small{display:block;font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:.3em;color:var(--mute);margin-top:6px}
+.ver .m{margin-left:auto;text-align:right;font-family:var(--serif);font-weight:900;font-size:clamp(34px,4vw,54px);line-height:1.2}
+.ver .m small{display:block;font-family:var(--sans);font-weight:500;font-size:15px;color:var(--mute);margin-top:8px;letter-spacing:.1em}
+.shots{display:flex;gap:22px;margin-top:70px;overflow-x:auto;scroll-snap-type:x mandatory;padding-bottom:26px;scrollbar-width:thin;scrollbar-color:var(--gold2) transparent}
+.shots figure{flex:none;width:min(560px,78vw);scroll-snap-align:start;cursor:zoom-in;position:relative;overflow:hidden}
+.shots img{width:100%;aspect-ratio:16/9;object-fit:cover;transition:transform .8s;box-shadow:0 0 0 1px var(--line)}
+.shots figure:hover img{transform:scale(1.06)}
+.shots figcaption{margin-top:12px;font-size:15px;color:var(--mute);letter-spacing:.1em}
+
+/* faq */
+details{border-bottom:1px solid var(--line);padding:26px 0;max-width:900px}
+summary{list-style:none;cursor:pointer;font-family:var(--serif);font-weight:900;font-size:22px;display:flex;justify-content:space-between;gap:20px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"＋";color:var(--gold);transition:transform .3s}
+details[open] summary::after{content:"－"}
+details p{margin-top:14px;color:var(--mute);font-size:17px}
+
+/* 收尾：聯絡 */
+.cta{padding:150px 7vw;text-align:center;background:radial-gradient(circle at 50% 0%,#3a2508 0%,var(--ink) 65%);overflow:hidden}
+.cta .big{font-family:var(--serif);font-weight:900;font-size:clamp(40px,6.4vw,92px);line-height:1.15;letter-spacing:.05em}
+.cta .big em{font-style:normal;color:var(--gold)}
+.cta p{color:var(--mute);margin:24px auto 0;max-width:560px;font-size:18px}
+.cta .row{display:flex;justify-content:center;gap:70px;align-items:center;margin-top:64px;flex-wrap:wrap}
+.qr{width:210px;height:210px;background:#fff;border-radius:16px;padding:12px;box-shadow:0 0 0 5px var(--gold2),0 0 70px rgba(217,180,90,.35)}
+.qr img{width:100%;height:100%}
+.idbox{text-align:left}
+.idbox .t{font-size:13px;letter-spacing:.35em;color:var(--gold)}
+.idbox .id{font-family:var(--serif);font-weight:900;font-size:clamp(34px,4.4vw,60px);line-height:1.2;margin:6px 0 20px}
+.idbox .id em{font-style:normal;color:var(--gold)}
+.btn.green{background:#06c755;color:#fff;box-shadow:0 12px 34px rgba(6,199,85,.35)}
+.btn.green:hover{transform:translateY(-3px)}
+.pills{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:56px}
+.pills span{padding:9px 22px;border:1px solid var(--line);border-radius:999px;font-size:14px;color:var(--mute);letter-spacing:.14em}
+
+footer{margin-left:84px;background:#070605;border-top:1px solid var(--line);padding:70px 7vw 40px}
+.fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:50px}
+.fgrid h4{font-family:var(--serif);font-weight:900;font-size:18px;color:var(--gold);letter-spacing:.2em;margin-bottom:16px}
+.fgrid a,.fgrid p{display:block;color:var(--mute);font-size:15px;padding:4px 0;transition:color .3s}
+.fgrid a:hover{color:var(--gold)}
+.fbrand{display:flex;gap:16px;align-items:center}
+.fbrand .lg{width:60px;height:60px;border-radius:50%;overflow:hidden;box-shadow:0 0 0 2px var(--gold2)}
+.fbrand b{font-family:var(--serif);font-weight:900;font-size:26px;letter-spacing:.1em}
+.fgrid .forum{margin-top:14px;padding:16px 18px;border:1px solid var(--line);color:var(--ivory)}
+.fgrid .forum small{display:block;color:var(--gold);letter-spacing:.3em;font-size:12px}
+.copy{margin-top:56px;padding-top:26px;border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;color:#8d826c;font-size:13px}
+.top{color:var(--gold)!important}
+
+.fab{position:fixed;right:26px;bottom:26px;z-index:60;width:76px;height:76px;border-radius:50%;background:#06c755;color:#fff;display:grid;place-items:center;font-weight:900;font-size:14px;letter-spacing:.05em;text-align:center;line-height:1.2;box-shadow:0 10px 30px rgba(6,199,85,.45);animation:pulse 2.6s infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.07)}}
+
+.rv{opacity:0;transform:translateY(26px);transition:opacity .8s ease-out,transform .8s ease-out}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.marq div,.fab,.netmap *{animation:none!important}}
+
+@media(max-width:900px){
+  .stamp{right:6px;bottom:-34px;width:96px;height:96px;font-size:17px}.fab{width:60px;height:60px;right:14px;bottom:16px;font-size:12px}.scroll{display:none}
+  .rail{display:none}main,footer{margin-left:0}
+  section{padding:90px 6vw}
+  .hero,.idc{grid-template-columns:1fr}.hero video.bg{display:none}
+  .stairs{grid-template-columns:1fr}.step{min-height:auto!important;margin-bottom:24px}
+  .svc{grid-template-columns:1fr}.flow{grid-template-columns:1fr;gap:34px}.flow::before{display:none}
+  .ver .m{margin-left:0;text-align:left}
+  .fgrid{grid-template-columns:1fr 1fr}
+  .btn.line{margin:14px 0 0}
+}
+</style>
+</head>
+<body>
+<div class="prog" id="prog"></div>
+
+<aside class="rail">
+  <div class="lg"><img src="assets/logo.jpg" alt="鑫駿"></div>
+  <nav id="nav">
+    <a href="#top" class="on">首頁</a>
+    <a href="#plans">方案</a>
+    <a href="#show">影音</a>
+    <a href="#svc">服務</a>
+    <a href="#idc">機房</a>
+    <a href="#ver">版本</a>
+    <a href="#faq">問答</a>
+    <a href="#contact">聯絡</a>
+  </nav>
+  <div class="tel">LINE @990xzylz</div>
+</aside>
+
+<main>
+<section class="hero" id="top">
+  <video class="bg" id="herovid" muted loop playsinline preload="none" data-src="assets/video/hero.mp4"></video>
+  <div class="rv">
+    <div class="eyebrow">技術 ・ 誠信 ・ 長期經營</div>
+    <h1>把你的<em>天堂</em><br>從想法，開成一座城</h1>
+    <p>鑫駿開服，天堂專業輔導。<br>從第一次開服的新手，到要做品牌的站長，<br>我們有三種合作方式，各自對應不同的你。</p>
+    <a class="btn gold" href="#plans">看三種方案</a><a class="btn line" href="https://lin.ee/zRPkfFF" target="_blank" rel="noopener">免費諮詢</a>
+  </div>
+  <div class="artwrap rv"><div class="art" id="art"></div><div class="stamp">鑫駿<br>輔導<br>開服</div></div>
+  <div class="scroll">SCROLL</div>
+</section>
+
+<div class="marq"><div id="mq"></div></div>
+
+<section id="plans" class="alt">
+  <div class="rv"><div class="num">01</div><div class="eyebrow">THREE PLANS</div><h2>三階梯，<br>選你現在的位置</h2><div class="hair"></div>
+  <p class="lead">不管你是第一次開服、已有經驗，還是想做出獨一無二的懷舊品牌，每一階都有人帶你走完。</p></div>
+
+  <div class="stairs">
+    <article class="step rv"><div class="glow"></div>
+      <div class="no">01</div><div class="who">新手入門</div>
+      <h3>輔導開服</h3><p class="tagline">第一次開服，我們手把手帶你走完。</p>
+      <ul><li>免費諮詢與規劃</li><li>版本選擇建議</li><li>伺服器架設與上線</li><li>官網論壇基礎建置</li><li>仿正／經典調整教學</li><li>開服當週陪跑</li></ul>
+      <div class="price"><small>方案價格</small>NT$ ＿＿＿＿</div>
+      <a class="go" href="https://lin.ee/zRPkfFF" target="_blank" rel="noopener">諮詢入門方案 →</a>
+    </article>
+    <article class="step rv"><div class="glow"></div>
+      <div class="no">02</div><div class="who">經驗站長</div>
+      <h3>版本買斷</h3><p class="tagline">你懂經營，我們交付完整版本。</p>
+      <ul><li>伺服器端＋客戶端＋DB</li><li>完整源碼</li><li>安裝說明與技術問答</li><li>支援 182・270・363・381</li><li>天M 變身系統</li><li>高防主機建議</li></ul>
+      <div class="price"><small>買斷價格</small>NT$ ＿＿＿＿</div>
+      <a class="go" href="https://lin.ee/zRPkfFF" target="_blank" rel="noopener">詢問買斷方案 →</a>
+    </article>
+    <article class="step rv"><div class="glow"></div><span class="ribbon">審核制・限量</span>
+      <div class="no">03</div><div class="who">品牌旗艦</div>
+      <h3>仿正・經典懷舊版<br>全球獨家代理</h3><p class="tagline">絕無第二。只給真正要做品牌的人。</p>
+      <ul><li>完整仿正版與經典懷舊版內容</li><li>專屬 LOGO 與視覺設計</li><li>專屬官網與論壇</li><li>高防 DDoS 主機</li><li>長期營運顧問</li><li>優先取得後續更新</li></ul>
+      <div class="price"><small>授權方式</small>洽談・審核制</div>
+      <a class="go" href="https://lin.ee/zRPkfFF" target="_blank" rel="noopener">申請旗艦授權 →</a>
+      <div class="proof">代理資格以授權文件為憑，洽談時提供。</div>
+    </article>
+  </div>
+</section>
+
+<section id="show">
+  <div class="rv"><div class="num">02</div><div class="eyebrow">SHOWREEL</div><h2>影音展示，<br>看得見的開服</h2><div class="hair"></div>
+  <p class="lead">真實遊戲畫面與我們的技能、版本、流程介紹。點開可全螢幕觀看。</p></div>
+  <div class="wall rv" id="wall"></div>
+</section>
+
+<section id="svc" class="alt">
+  <div class="rv"><div class="num">03</div><div class="eyebrow">SERVICES</div><h2>開服所需，<br>一次到位</h2><div class="hair"></div></div>
+  <div class="svc rv">
+    <div><i>01</i><svg viewBox="0 0 48 48"><rect x="6" y="8" width="36" height="12" rx="2"/><rect x="6" y="28" width="36" height="12" rx="2"/><circle cx="13" cy="14" r="1.5"/><circle cx="13" cy="34" r="1.5"/></svg><b>伺服器架設</b><p>專業主機架設與上線，穩定機房、長期維運。</p></div>
+    <div><i>02</i><svg viewBox="0 0 48 48"><path d="M24 4 40 10v12c0 11-7 18-16 22C15 40 8 33 8 22V10z"/><path d="M17 23l5 5 10-10"/></svg><b>高防 DDoS 主機</b><p>主機防護、流量保護，不怕被打、不怕斷線。</p></div>
+    <div><i>03</i><svg viewBox="0 0 48 48"><path d="M12 6h18l8 8v28H12z"/><path d="M30 6v8h8M18 24h14M18 31h14"/></svg><b>版本深層精修</b><p>支援 182・270・363・381，仿正與經典版調整教學。</p></div>
+    <div><i>04</i><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="18"/><ellipse cx="24" cy="24" rx="7" ry="18"/><path d="M6 24h36"/></svg><b>官網論壇規劃</b><p>官網、公告、下載頁、官方論壇，一次建好。</p></div>
+    <div><i>05</i><svg viewBox="0 0 48 48"><path d="M8 38 24 8l16 30z"/><circle cx="24" cy="27" r="5"/></svg><b>LOGO 視覺設計</b><p>專屬 LOGO 與品牌視覺，讓你的服長得不一樣。</p></div>
+    <div><i>06</i><svg viewBox="0 0 48 48"><path d="M8 38V12l16 14 16-14v26"/></svg><b>天M 變身系統</b><p>全新、最先進的變身系統，可整合進你的版本。</p></div>
+  </div>
+</section>
+
+<section id="idc">
+  <div class="rv"><div class="num">04</div><div class="eyebrow">INFRASTRUCTURE</div><h2>穩定，<br>是開服的第一件事</h2><div class="hair"></div></div>
+  <div class="idc">
+    <div class="netmap rv">
+      <svg viewBox="0 0 640 400" preserveAspectRatio="xMidYMid slice">
+        <g class="lines"></g><g class="nodes"></g>
+        <circle class="ring" cx="320" cy="200" r="10"/><circle class="ring" cx="320" cy="200" r="10" style="animation-delay:1.5s"/>
+        <circle class="hub" cx="320" cy="200" r="11"/>
+      </svg>
+      <div class="lbl">PROTECTED NETWORK</div>
+    </div>
+    <div class="rv">
+      <h2 style="font-size:clamp(26px,3vw,40px)">高防主機，<br>把攻擊擋在門外</h2>
+      <ul>
+        <li><b>流量防護</b>　主機防護、流量保護，降低被攻擊的風險</li>
+        <li><b>穩定機房</b>　長期維運，開服後出問題找得到人</li>
+        <li><b>安全對接</b>　多元金流與官網整合，上線更安心</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="ver" class="alt">
+  <div class="rv"><div class="num">05</div><div class="eyebrow">VERSIONS</div><h2>核心版本與系統</h2><div class="hair"></div></div>
+  <div class="ver rv">
+    <div class="v">182<small>VERSION</small></div><div class="v">270<small>VERSION</small></div><div class="v">363<small>VERSION</small></div><div class="v">381<small>VERSION</small></div>
+    <div class="m">天M<br>變身系統<small>全新・最先進</small></div>
+  </div>
+  <div class="shots rv" id="shots"></div>
+</section>
+
+<section id="faq">
+  <div class="rv"><div class="num">06</div><div class="eyebrow">FAQ</div><h2>常見問題</h2><div class="hair"></div></div>
+  <div style="margin-top:50px" class="rv">
+    <details><summary>我完全不懂技術，可以嗎？</summary><p>可以。入門方案就是為新手設計，從選版本到架設上線，我們手把手帶你。</p></details>
+    <details><summary>仿正版和經典版有什麼不同？</summary><p>兩者定位不同，細節請透過 LINE 洽談，我們依你的需求建議。</p></details>
+    <details><summary>買斷之後還有支援嗎？</summary><p>附安裝說明與技術問答。更多長期支援方式，洽談時說明。</p></details>
+    <details><summary>旗艦授權跟一般買斷差在哪？</summary><p>旗艦授權是<b>獨家開發、最新高規格版本</b>，市場獨家的懷舊版本，主打情懷。細節若須知曉，請洽客服詳解。</p></details>
+    <details><summary>怎麼開始？</summary><p>先加官方 LINE 免費諮詢，說說你的想法，我們再建議適合的方案。</p></details>
+  </div>
+</section>
+
+<section id="contact" class="cta">
+  <div class="rv">
+    <div class="eyebrow">LET'S BUILD YOUR WORLD</div>
+    <div class="big">下一座城，<br><em>從這裡開始</em></div>
+    <p>諮詢與規劃免費。先聊一聊，再決定要不要合作。</p>
+    <div class="row">
+      <div class="qr"><img src="assets/qr.png" alt="LINE QR"></div>
+      <div class="idbox">
+        <div class="t">OFFICIAL LINE</div>
+        <div class="id">LINE ID<br><em>@990xzylz</em></div>
+        <a class="btn green" href="https://lin.ee/zRPkfFF" target="_blank" rel="noopener">加入官方 LINE，專人服務</a>
+      </div>
+    </div>
+    <div class="pills"><span>免費諮詢</span><span>客製規劃</span><span>仿正・經典</span><span>技術</span><span>誠信</span><span>長期經營</span></div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="fgrid">
+    <div>
+      <div class="fbrand"><div class="lg"><img src="assets/logo.jpg" alt="鑫駿"></div><b>鑫駿開服</b></div>
+      <p style="margin-top:16px">天堂專業輔導<br>技術・誠信・長期經營</p>
+    </div>
+    <div><h4>方案</h4><a href="#plans">輔導開服</a><a href="#plans">版本買斷</a><a href="#plans">旗艦授權</a></div>
+    <div><h4>了解更多</h4><a href="#show">影音展示</a><a href="#svc">服務項目</a><a href="#idc">高防機房</a><a href="#faq">常見問題</a></div>
+    <div><h4>聯絡</h4><a href="https://lin.ee/zRPkfFF" target="_blank" rel="noopener">LINE：@990xzylz</a>
+      <div class="forum"><small>OFFICIAL FORUM</small>官方論壇・籌備中<br>教學庫 / 版本情報 / 站長交流</div></div>
+  </div>
+  <div class="copy"><span>© 2026 鑫駿輔導開服 All Rights Reserved</span><span>退款與隱私政策（籌備中）</span><a class="top" href="#top">回到頂端 ↑</a></div>
+</footer>
+
+<a class="fab" href="https://lin.ee/zRPkfFF" target="_blank" rel="noopener">免費<br>諮詢</a>
+
+<dialog id="dlg"><div class="dlg"><button class="x" id="dx" aria-label="關閉">×</button><div id="dbody"></div></div></dialog>
+
+<script>
+const VIDEOS=[
+ {f:"v5_skills",t:"三大技能一次看懂",s:"衝擊之暈・聖結界・三重矢"},
+ {f:"v2_dragons",t:"四大龍一次看完",s:"火龍-巴拉卡斯・水龍-法力昂"},
+ {f:"v1_loot",t:"開局 999 神裝",s:"開服就有的神裝掉落"},
+ {f:"v3_versions",t:"四個版本哪個適合你",s:"182・270・363・381"},
+ {f:"v4_steps",t:"四步驟帶你上架",s:"從諮詢到開服當 GM"}
+];
+const SHOTS=[["s1","攻城戰・城門口大混戰"],["s2","守城被圍攻"],["s3","火龍-巴拉卡斯"],["s4","神裝背包・真冥皇頭盔"]];
+
+// 影音牆
+const wall=document.getElementById('wall');
+wall.innerHTML=VIDEOS.map(v=>`<div class="vid" data-f="${v.f}" data-t="${v.t}"><div class="ph"><img src="assets/video/${v.f}.jpg" alt="${v.t}"><div class="play"></div></div><b>${v.t}</b><small>${v.s}</small></div>`).join('');
+// 截圖輪播
+document.getElementById('shots').innerHTML=SHOTS.map(([f,c])=>`<figure data-img="assets/shots/${f}.jpg" data-c="${c}"><img src="assets/shots/${f}.jpg" alt="${c}" loading="lazy"><figcaption>${c}</figcaption></figure>`).join('');
+// 跑馬燈
+const mq=document.getElementById('mq');
+const items=['182','270','363','381','<em>天M</em>','仿正','經典','<em>高防 DDoS</em>','輔導開服','版本買斷'];
+mq.innerHTML=[...items,...items].map(x=>`<span>${x}</span>`).join('');
+// 彈窗
+const dlg=document.getElementById('dlg'),dbody=document.getElementById('dbody');
+function openVideo(f){dbody.innerHTML=`<video src="assets/video/${f}.mp4" controls autoplay playsinline></video>`;dlg.showModal()}
+function openImg(src,c){dbody.innerHTML=`<img src="${src}" alt="${c}">`;dlg.showModal()}
+document.getElementById('dx').onclick=()=>dlg.close();
+dlg.addEventListener('close',()=>{dbody.innerHTML=''});
+dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+wall.addEventListener('click',e=>{const v=e.target.closest('.vid');if(v)openVideo(v.dataset.f)});
+document.getElementById('shots').addEventListener('click',e=>{const f=e.target.closest('figure');if(f)openImg(f.dataset.img,f.dataset.c)});
+// 機房網路節點
+(function(){const L=document.querySelector('.netmap .lines'),N=document.querySelector('.netmap .nodes');let l='',n='';const hub=[320,200];
+ const pts=[[70,70],[120,300],[190,150],[230,330],[420,60],[500,140],[560,280],[470,340],[90,200],[360,330],[300,40],[590,60],[40,340],[540,200]];
+ pts.forEach(([x,y])=>{l+=`<path class="ln" d="M${hub[0]} ${hub[1]} Q ${(hub[0]+x)/2} ${(hub[1]+y)/2-30} ${x} ${y}"/>`;n+=`<circle class="nd" cx="${x}" cy="${y}" r="3"/>`});
+ L.innerHTML=l;N.innerHTML=n})();
+// 漸現
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+// 導覽高亮＋進度條
+const links=[...document.querySelectorAll('#nav a')],secs=links.map(a=>document.querySelector(a.getAttribute('href'))),prog=document.getElementById('prog');
+addEventListener('scroll',()=>{let k=0;secs.forEach((s,i)=>{if(s&&s.getBoundingClientRect().top<innerHeight*.4)k=i});links.forEach((a,i)=>a.classList.toggle('on',i===k));
+ prog.style.width=(scrollY/(document.documentElement.scrollHeight-innerHeight)*100)+'%'},{passive:true});
+// 階梯滑鼠光暈
+document.querySelectorAll('.step').forEach(s=>{const g=s.querySelector('.glow');s.addEventListener('mousemove',e=>{const r=s.getBoundingClientRect();g.style.left=(e.clientX-r.left)+'px';g.style.top=(e.clientY-r.top)+'px'})});
+// 首頁圖視差
+const art=document.getElementById('art');
+document.querySelector('.hero').addEventListener('mousemove',e=>{const x=(e.clientX/innerWidth-.5)*14,y=(e.clientY/innerHeight-.5)*10;art.style.transform=`perspective(900px) rotateY(${x/2}deg) rotateX(${-y/2}deg) translate(${x}px,${y}px)`});
+// 首頁背景影片：僅桌機、非省電偏好才載入（學 lineages.tw）
+(function(){const v=document.getElementById('herovid');const ok=innerWidth>900&&!matchMedia('(prefers-reduced-motion: reduce)').matches;if(ok){v.src=v.dataset.src;v.play().catch(()=>{})}})();
+</script>
+</body>
+</html>
