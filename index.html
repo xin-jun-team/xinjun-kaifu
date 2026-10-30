@@ -60,8 +60,10 @@ h2{font-family:var(--serif);font-weight:900;font-size:clamp(32px,4.4vw,56px);lin
 .btn.line{border:1px solid var(--gold2);color:var(--gold);margin-left:14px}
 .btn.line:hover{background:rgba(217,180,90,.1)}
 .artwrap{position:relative}
-.art{aspect-ratio:16/10;background:url(assets/hero.jpg) 6% 42%/auto 168%;border-radius:6px;box-shadow:0 30px 80px rgba(0,0,0,.6);position:relative;overflow:hidden;transition:transform .15s}
-.art::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,transparent 70%,rgba(11,10,9,.55) 100%)}
+.art{aspect-ratio:16/10;background:radial-gradient(circle at 50% 50%,#3a2508 0%,#120c04 60%,#070605 100%);border-radius:6px;box-shadow:0 30px 80px rgba(0,0,0,.6);position:relative;overflow:hidden;transition:transform .15s;display:grid;place-items:center}
+.art::before{content:"";position:absolute;width:150%;aspect-ratio:1;background:conic-gradient(from 0deg,rgba(217,180,90,0) 0 20deg,rgba(217,180,90,.18) 28deg,rgba(217,180,90,0) 38deg 90deg,rgba(217,180,90,.14) 100deg,rgba(217,180,90,0) 112deg 190deg,rgba(217,180,90,.16) 200deg,rgba(217,180,90,0) 212deg 280deg,rgba(217,180,90,.12) 292deg,rgba(217,180,90,0) 304deg);animation:spin 40s linear infinite;-webkit-mask-image:radial-gradient(circle,#000 15%,transparent 65%)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.art img{position:relative;width:52%;aspect-ratio:1;object-fit:cover;border-radius:50%;box-shadow:0 0 0 6px #d9b45a,0 0 0 14px rgba(217,180,90,.25),0 0 80px rgba(255,160,28,.5)}
 .artwrap::before{content:"";position:absolute;inset:-14px;border:1px solid rgba(217,180,90,.35);border-radius:10px;pointer-events:none}
 .stamp{position:absolute;right:-18px;bottom:-26px;width:118px;height:118px;border-radius:50%;background:var(--seal);color:#fff;display:grid;place-items:center;text-align:center;font-family:var(--serif);font-weight:900;font-size:20px;line-height:1.25;letter-spacing:.1em;box-shadow:0 0 0 4px rgba(255,255,255,.12),0 14px 30px rgba(0,0,0,.5);transform:rotate(-8deg)}
 .scroll{position:absolute;left:7vw;bottom:34px;font-size:12px;letter-spacing:.4em;color:var(--mute);z-index:3}
@@ -255,7 +257,7 @@ footer{margin-left:84px;background:#070605;border-top:1px solid var(--line);padd
     <p>鑫駿開服，天堂專業輔導。<br>從第一次開服的新手，到要做品牌的站長，<br>我們有三種合作方式，各自對應不同的你。</p>
     <a class="btn gold" href="#plans">看三種方案</a><a class="btn line" href="https://lin.ee/zRPkfFF" target="_blank" rel="noopener">免費諮詢</a>
   </div>
-  <div class="artwrap rv"><div class="art" id="art"></div><div class="stamp">鑫駿<br>輔導<br>開服</div></div>
+  <div class="artwrap rv"><div class="art" id="art"><img src="assets/logo.jpg" alt="鑫駿"></div><div class="stamp">鑫駿<br>輔導<br>開服</div></div>
   <div class="scroll">SCROLL</div>
 </section>
 
