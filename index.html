@@ -48,6 +48,7 @@ h2{font-family:var(--serif);font-weight:900;font-size:clamp(32px,4.4vw,56px);lin
 /* hero */
 .hero{min-height:100vh;display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:5vw;padding-top:110px;overflow:hidden;background:radial-gradient(circle at 78% 40%,#2a1c06 0%,var(--ink) 60%)}
 .hero video.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.22;filter:saturate(.8) blur(1px)}
+.hero video.bgm{display:none}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--ink) 8%,rgba(11,10,9,.6) 60%,rgba(11,10,9,.85));pointer-events:none}
 .hero>*{position:relative;z-index:2}
 .hero h1{font-family:var(--serif);font-weight:900;font-size:clamp(46px,6.4vw,92px);line-height:1.12;letter-spacing:.05em}
@@ -212,6 +213,12 @@ footer{margin-left:84px;background:#070605;border-top:1px solid var(--line);padd
   .rail{display:none}main,footer{margin-left:0}
   section{padding:90px 6vw}
   .hero,.idc{grid-template-columns:1fr}.hero video.bg{display:none}
+  .hero{min-height:100svh;align-content:center;padding-top:80px}
+  .hero video.bgm{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.85;filter:saturate(1.1)}
+  .hero::after{background:linear-gradient(180deg,rgba(11,10,9,.55) 0%,rgba(11,10,9,.25) 35%,rgba(11,10,9,.9) 100%)}
+  .hero h1{text-shadow:0 4px 24px rgba(0,0,0,.8)}.hero p{color:#e6dcc4}
+  .artwrap{display:none}
+  .marq div{font-size:22px}
   .stairs{grid-template-columns:1fr}.step{min-height:auto!important;margin-bottom:24px}
   .svc{grid-template-columns:1fr}.flow{grid-template-columns:1fr;gap:34px}.flow::before{display:none}
   .ver .m{margin-left:0;text-align:left}
@@ -241,6 +248,7 @@ footer{margin-left:84px;background:#070605;border-top:1px solid var(--line);padd
 <main>
 <section class="hero" id="top">
   <video class="bg" id="herovid" muted loop playsinline preload="none" data-src="assets/video/hero.mp4"></video>
+  <video class="bgm" id="herovidm" muted loop playsinline autoplay preload="auto" poster="assets/video/hero_m.jpg" data-src="assets/video/hero_m.mp4"></video>
   <div class="rv">
     <div class="eyebrow">技術 ・ 誠信 ・ 長期經營</div>
     <h1>把你的<em>天堂</em><br>從想法，開成一座城</h1>
@@ -425,7 +433,7 @@ document.querySelectorAll('.step').forEach(s=>{const g=s.querySelector('.glow');
 const art=document.getElementById('art');
 document.querySelector('.hero').addEventListener('mousemove',e=>{const x=(e.clientX/innerWidth-.5)*14,y=(e.clientY/innerHeight-.5)*10;art.style.transform=`perspective(900px) rotateY(${x/2}deg) rotateX(${-y/2}deg) translate(${x}px,${y}px)`});
 // 首頁背景影片：僅桌機、非省電偏好才載入（學 lineages.tw）
-(function(){const v=document.getElementById('herovid');const ok=innerWidth>900&&!matchMedia('(prefers-reduced-motion: reduce)').matches;if(ok){v.src=v.dataset.src;v.play().catch(()=>{})}})();
+(function(){const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;const d=document.getElementById('herovid'),m=document.getElementById('herovidm');if(innerWidth>900){if(!rm){d.src=d.dataset.src;d.play().catch(()=>{})}}else if(!rm){m.src=m.dataset.src;m.play().catch(()=>{})}})();
 </script>
 </body>
 </html>
